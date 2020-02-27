@@ -23,6 +23,7 @@ exports.login =  [
                 error: errorValidation
             });
         }
+        
         next()
     }
 ];
