@@ -9,6 +9,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 // var indexRouter = require('./routes/index');
 // var usersRouter = require('./routes/users');
+// require('./seed');
 
 const dbConfig = require('./Api/v1.0/Config/DB');
 
