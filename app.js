@@ -4,7 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const cors = require('cors');
-const passport = require('passport')
+const passport = require('passport');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
