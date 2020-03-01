@@ -34,3 +34,7 @@ module.exports.comparePassword = function(password, hash, callback){
         callback(null, isMatch);
     })
 }
+
+module.exports.hasRole = function(role, callback){
+    return callback(false,true);
+}
