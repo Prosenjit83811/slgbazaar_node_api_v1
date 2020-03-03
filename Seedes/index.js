@@ -1,10 +1,12 @@
 var seeder = require('mongoose-seed');
 const User = require('./User');
 const Role = require('./Role');
+const Address = require('./Address');
 
 const models = [
   'User',
-  'Role'
+  'Role',
+  'Address',
 ]
 
 // Connect to MongoDB via Mongoose
@@ -14,6 +16,7 @@ seeder.connect('mongodb://127.0.0.1:27017/slgbazaar', function() {
   seeder.loadModels([
     './Api/v1.0/Models/UserModel',
     './Api/v1.0/Models/RoleModel',
+    './Api/v1.0/Models/AddressModel',
   ]);
  
   // Clear specified collections
@@ -31,4 +34,5 @@ seeder.connect('mongodb://127.0.0.1:27017/slgbazaar', function() {
 var data = [
             User.seed,
             Role.seed,
+            Address.seed,
           ];
