@@ -8,7 +8,7 @@ const passport = require('passport');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
-const dbConfig = require('./Api/v1.0/Config/DB');
+const dbConfig = require('./Config/DB');
 
 mongoose.connect(dbConfig.detabase, {useNewUrlParser:true})
 .then(()=>{
@@ -32,7 +32,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-const route_v1 = require('./routes/Route_v1.0');
+const route_v1 = require('./routes_new/Route_v1.0');
 route_v1(app);
 
 // catch 404 and forward to error handler

@@ -1,12 +1,12 @@
-const Auth = require('../Api/v1.0/Routes/AuthRoute');
-const Profile = require('../Api/v1.0/Routes/ProfileRoute');
-const config = require('../Api/v1.0/Config/App');
+const Auth = require('../Routes/AuthRoute');
+const Profile = require('../Routes/ProfileRoute');
+const config = require('../Config/App');
 const prefix = '/api/'+config.version;
 const passport = require('passport')
 const Policy = require('express-policies');
-const UserPolicie = require('../Api/v1.0/Policies/UserPolicy');
+const UserPolicie = require('../Policies/UserPolicy');
 
-require('../Api/v1.0/Middlewares/PassportMiddleware')(passport);
+require('../Middlewares/PassportMiddleware')(passport);
 
 module.exports = function(app){
     app.use(passport.initialize());
@@ -17,3 +17,5 @@ module.exports = function(app){
     app.use(prefix+'/profile', [passport.authenticate('jwt', { session: false }),Policy(UserPolicie)], Profile);
 
 }
+
+// http://localhost:3000/api/1.0/auth/login

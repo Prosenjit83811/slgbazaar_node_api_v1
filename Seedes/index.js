@@ -14,9 +14,9 @@ seeder.connect('mongodb://127.0.0.1:27017/slgbazaar', function() {
  
   // Load Mongoose models
   seeder.loadModels([
-    './Api/v1.0/Models/UserModel',
-    './Api/v1.0/Models/RoleModel',
-    './Api/v1.0/Models/AddressModel',
+    './Models/UserModel',
+    './Models/RoleModel',
+    './Models/AddressModel',
   ]);
  
   // Clear specified collections
