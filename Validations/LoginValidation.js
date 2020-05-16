@@ -12,7 +12,9 @@ exports.login =  [
         });
     }).isInt().withMessage('invalied Number').isLength({ min: 10 }).withMessage('Number minimam 10'),
 
-    check('password').isLength({ min: 6 }).withMessage('password minimam 6'),
+    check('password')
+    .notEmpty().withMessage('password notEmpty')
+    .isLength({ min: 6 }).withMessage('password minimam 6'),
 
     function(req,res,next) {
 
@@ -20,7 +22,7 @@ exports.login =  [
         if ( !errorValidation.isEmpty() ) {
             return res.status(500).json({
                 title: 'an error occured',
-                error: errorValidation
+                error: errorValidation.mapped()
             });
         }
         
