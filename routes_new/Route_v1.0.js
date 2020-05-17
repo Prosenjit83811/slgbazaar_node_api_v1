@@ -1,5 +1,6 @@
 const Auth = require('../Routes/AuthRoute');
 const Profile = require('../Routes/ProfileRoute');
+const User = require('../Routes/UserRoute');
 const config = require('../Config/App');
 const prefix = '/api/'+config.version;
 const passport = require('passport')
@@ -15,6 +16,7 @@ module.exports = function(app){
     // Routes
     app.use(prefix+'/auth', Auth);
     app.use(prefix+'/profile', [passport.authenticate('jwt', { session: false }),Policy(UserPolicie)], Profile);
+    app.use(prefix+'/users', [passport.authenticate('jwt', { session: false }),Policy(UserPolicie)], User);
 
 }
 
