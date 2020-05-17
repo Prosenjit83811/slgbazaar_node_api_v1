@@ -15,7 +15,7 @@ var userSchema = mongoose.Schema({
 const User = module.exports = mongoose.model("User", userSchema);
 
 module.exports.getUserByID = function(id, callback){
-    User.findById(id, callback);
+    User.findById(id, callback).populate("role");
 }
 module.exports.findUserByNumber = function(number, callback){
     const query = {
@@ -41,5 +41,5 @@ module.exports.comparePassword = function(password, hash, callback){
 }
 
 module.exports.hasRole = function(role, callback){
-    return callback(false,true);
+    return callback(false,['s_admin','admin']);
 }
