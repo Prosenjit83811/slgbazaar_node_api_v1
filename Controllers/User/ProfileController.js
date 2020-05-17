@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 const User = require('../../Models/UserModel')
+const Role = require('../../Models/RoleModel')
 const dbConfig = require('../../Config/DB');
 
 exports.index = (req, res) => {
@@ -8,6 +9,7 @@ exports.index = (req, res) => {
    
     try {
         User.findById(userId)
+            .populate("role")
             .exec()
             .then(result => {
                 if(result){

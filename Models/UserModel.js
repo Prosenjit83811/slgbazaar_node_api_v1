@@ -2,13 +2,17 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 
 var userSchema = mongoose.Schema({
-    role_id: { type: String, required: true},
+    role: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Role",
+        required: true
+    },
     number: { type: Number, required: true, unique: true},
     password: { type: String, required: true}
 });
 
 
-const User = module.exports = mongoose.model('User', userSchema);
+const User = module.exports = mongoose.model("User", userSchema);
 
 module.exports.getUserByID = function(id, callback){
     User.findById(id, callback);
