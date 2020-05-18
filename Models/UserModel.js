@@ -2,13 +2,18 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 
 var userSchema = mongoose.Schema({
+    number: { type: Number, required: true, unique: true},
+    password: { type: String, required: true},
     role: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Role",
         required: true
     },
-    number: { type: Number, required: true, unique: true},
-    password: { type: String, required: true}
+    address: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Address",
+        required: true
+    }]
 });
 
 
