@@ -17,7 +17,6 @@ module.exports = function(app){
     app.use(prefix+'/auth', Auth);
     app.use(prefix+'/profile', [passport.authenticate('jwt', { session: false }),Policy(UserPolicie)], Profile);
     app.use(prefix+'/users', [passport.authenticate('jwt', { session: false }),Policy(UserPolicie)], User);
-
 }
 
 // http://localhost:3000/api/1.0/auth/login
