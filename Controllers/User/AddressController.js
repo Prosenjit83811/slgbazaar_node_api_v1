@@ -8,16 +8,9 @@ const dbConfig = require('../../Config/DB');
 exports.store = async (req, res) => {
 
     try {
-        let id = "";
         const user = await User.findById(req.params.userId, function(err, record){
             if (err) throw res.status(404).json({message: "Invalied user"});
         });
-
-        // const address = new Address(req.body);
-        // address.content = res.body.content;
-        // address.user = user._id;
-        // console.log("Address", address);
-        // await address.save();
 
         let body = req.body;
         const address = new Address(body);
