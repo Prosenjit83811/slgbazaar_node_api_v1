@@ -1,7 +1,7 @@
-const jwt = require('jsonwebtoken');
+// const jwt = require('jsonwebtoken');
 const User = require('../../Models/UserModel')
-const Role = require('../../Models/RoleModel')
-const dbConfig = require('../../Config/DB');
+// const Role = require('../../Models/RoleModel')
+// const dbConfig = require('../../Config/DB');
 
 exports.index = (req, res) => {
     console.log(req.user);
@@ -10,6 +10,7 @@ exports.index = (req, res) => {
     try {
         User.findById(userId)
             .populate("role")
+            .populate("address")
             .exec()
             .then(result => {
                 if(result){
