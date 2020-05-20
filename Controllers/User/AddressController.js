@@ -8,9 +8,9 @@ const dbConfig = require('../../Config/DB');
 exports.store = async (req, res) => {
 
     try {
-        const user = await User.findById(req.params.userId, function(err, record){
-            if (err) throw res.status(404).json({message: "Invalied user"});
-        });
+        // const user = await User.findById(req.params.userId, function(err, record){
+        //     if (err) throw res.status(404).json({message: "You have not permission to access this"});
+        // });
 
         let body = req.body;
         const address = new Address(body);

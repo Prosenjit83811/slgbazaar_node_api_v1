@@ -45,6 +45,6 @@ module.exports.comparePassword = function(password, hash, callback){
     })
 }
 
-module.exports.hasRole = function(role, callback){
+module.exports.hasRole = (role, callback)=>{
     return callback(false,['s_admin','admin']);
 }
