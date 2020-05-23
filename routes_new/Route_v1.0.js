@@ -1,6 +1,7 @@
 const Auth = require('../Routes/AuthRoute');
 const Profile = require('../Routes/ProfileRoute');
 const User = require('../Routes/UserRoute');
+const Category = require('../Routes/CategoryRoute');
 const config = require('../Config/App');
 const prefix = '/api/'+config.version;
 const passport = require('passport')
@@ -17,6 +18,7 @@ module.exports = function(app){
     app.use(prefix+'/auth', Auth);
     app.use(prefix+'/profile', [passport.authenticate('jwt', { session: false }),Policy(UserPolicie)], Profile);
     app.use(prefix+'/users', [passport.authenticate('jwt', { session: false }),Policy(UserPolicie)], User);
+    app.use(prefix+'/category', [passport.authenticate('jwt', { session: false }),Policy(UserPolicie)], Category);
 }
 
 // http://localhost:3000/api/1.0/auth/login
