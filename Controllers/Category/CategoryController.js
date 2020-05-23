@@ -12,12 +12,12 @@ exports.index = (req, res) => {
             limit: 2,
             populate: {
                 path: 'sub_categories', 
-                match: { is_deleted: false }
+                match: { isDeleted: false }
             }
         };
 
         var query   = {
-            is_deleted: false 
+            isDeleted: false 
         };
 
         Category.paginate(query, options)
