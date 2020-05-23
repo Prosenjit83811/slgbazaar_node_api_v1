@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs');
 var userSchema = mongoose.Schema({
     number: { type: Number, required: true, unique: true},
     password: { type: String, required: true},
+    isDeleted: { type: Boolean, 'default': false },
     role: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Role",
@@ -14,7 +15,7 @@ var userSchema = mongoose.Schema({
         ref: "Address",
         required: true
     }]
-});
+}, {timestamps: true});
 
 
 const User = module.exports = mongoose.model("User", userSchema);
