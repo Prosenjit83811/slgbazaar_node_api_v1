@@ -9,6 +9,7 @@ require('../../Models/ProductAttributeModel')
 exports.index = (req, res) => {
     
         const options = {
+            sort: {"name": -1},
             page: 1,
             limit: 2,
             populate: [{
