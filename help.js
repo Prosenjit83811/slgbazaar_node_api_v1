@@ -12,3 +12,4 @@
 
 //// ---- API ---- ////
 // http://localhost:3000/api/1.0/auth/login
+// https://stackoverflow.com/questions/19222520/populate-nested-array-in-mongoose

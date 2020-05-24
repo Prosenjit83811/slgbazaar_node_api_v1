@@ -3,12 +3,18 @@ const User = require('./User');
 const Role = require('./Role');
 const Address = require('./Address');
 const Category = require('./Category');
+const Product = require('./Product');
+const ProductVariation = require('./ProductVariation');
+const ProductAttribute = require('./ProductAttribute');
 
 const models = [
   'User',
   'Role',
   'Address',
-  'Category'
+  'Category',
+  'Product',
+  'ProductVariation',
+  'ProductAttribute',
 ]
 
 // Connect to MongoDB via Mongoose
@@ -19,7 +25,10 @@ seeder.connect('mongodb://127.0.0.1:27017/slgbazaar', function() {
     './Models/UserModel',
     './Models/RoleModel',
     './Models/AddressModel',
-    './Models/CategoryModel'
+    './Models/CategoryModel',
+    './Models/ProductModel',
+    './Models/ProductVariationModel',
+    './Models/ProductAttributeModel',
   ]);
  
   // Clear specified collections
@@ -38,5 +47,8 @@ var data = [
             User.seed,
             Role.seed,
             Address.seed,
-            Category.seed
+            Category.seed,
+            Product.seed,
+            ProductVariation.seed,
+            ProductAttribute.seed,
           ];
