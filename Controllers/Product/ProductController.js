@@ -2,6 +2,8 @@
 const Product = require('../../Models/ProductModel')
 // const mongoosePaginate = require('mongoose-paginate-v2');
 require('../../Models/ProductVariationModel')
+require('../../Models/ProductAttributeModel')
+// require('../../Models/CategoryModel')
 // const dbConfig = require('../../Config/DB');
 
 exports.index = (req, res) => {
@@ -9,10 +11,20 @@ exports.index = (req, res) => {
         const options = {
             page: 1,
             limit: 2,
-            populate: {
+            populate: [{
+                select: ['_id','variation'],
                 path: 'productVariations', 
-                match: { isDeleted: false }
-            }
+                match: { isDeleted: false },
+                populate: {
+                    select: ['_id','attribute','value'],
+                    path: 'productAttributes', 
+                    match: { isDeleted: false }
+                }
+            },{
+                select: ['_id','category'],
+                path: 'categories', 
+                match: { isDeleted: false },
+            },]
         };
 
         var query   = {

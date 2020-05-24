@@ -1,18 +1,18 @@
 const mongoose = require('mongoose');
 const mongoosePaginate = require('mongoose-paginate-v2');
 
-var ProductAttributeSchema = mongoose.Schema({
+var productAttributeSchema = mongoose.Schema({
     attribute: { type: String, required: true},
-    value: { type: Array, required: true},
+    value: { type: String, required: true},
     isDeleted: { type: Boolean, 'default': false },
     productVariation: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "productVariation"
+        ref: "ProductVariation"
     },
     products: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: "product"
+        ref: "Product"
     }]
 }, {timestamps: true});
-ProductAttributeSchema.plugin(mongoosePaginate);
-const ProductAttribute = module.exports = mongoose.model('ProductAttribute', ProductAttributeSchema);
+productAttributeSchema.plugin(mongoosePaginate);
+const ProductAttribute = module.exports = mongoose.model('ProductAttribute', productAttributeSchema);
