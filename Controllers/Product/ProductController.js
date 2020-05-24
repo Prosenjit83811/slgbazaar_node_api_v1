@@ -17,11 +17,13 @@ exports.index = (req, res) => {
                 path: 'productVariations', 
                 match: { isDeleted: false },
                 populate: {
+                    options: { sort: { "value": 1 }},
                     select: ['_id','attribute','value'],
                     path: 'productAttributes', 
                     match: { isDeleted: false }
                 }
             },{
+                options: { sort: { "category": 1 }},
                 select: ['_id','category'],
                 path: 'categories', 
                 match: { isDeleted: false },
