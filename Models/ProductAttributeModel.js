@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const mongoosePaginate = require('mongoose-paginate-v2');
 
 var ProductAttributeSchema = mongoose.Schema({
     attribute: { type: String, required: true},
@@ -13,5 +14,5 @@ var ProductAttributeSchema = mongoose.Schema({
         ref: "product"
     }]
 }, {timestamps: true});
-
+ProductAttributeSchema.plugin(mongoosePaginate);
 const ProductAttribute = module.exports = mongoose.model('ProductAttribute', ProductAttributeSchema);
