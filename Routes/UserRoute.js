@@ -5,9 +5,9 @@ const UserValidation = require('../Validations/UserValidation');
 const AddressController = require('../Controllers/User/AddressController');
 const AddressValidation = require('../Validations/AddressValidation');
 
-
-router.post('/', UserValidation.user, UserController.store);
 router.get('/', UserController.index);
+router.post('/', UserValidation.user, UserController.store);
+router.put('/:userId', UserValidation.user, UserController.update);
 router.post('/:userId/address', AddressValidation.address, AddressController.store);
 
 module.exports = router;
