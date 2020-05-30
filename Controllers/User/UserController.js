@@ -5,6 +5,42 @@ const dbConfig = require('../../Config/DB');
 
 
 
+exports.index = (req, res) => {
+    
+    const options = {
+        sort: {"name": -1},
+        page: 1,
+        limit: 2,
+        populate: {
+            select: ['_id','role'],
+            path: 'role' 
+        }
+    };
+
+    var query   = {
+        isDeleted: false 
+    };
+
+    User.paginate(query, options)
+        .then(result => {
+            if(result){
+                res.status(200).json({
+                    data: result
+                });
+            }else{
+                res.status(404).json({
+                    message: "Not found any record"
+                });
+            }
+            
+        })
+        .catch(error => {
+            res.status(500).json({
+                error: error
+            });
+        });
+
+}
 
 
 exports.store = async (req, res) => {

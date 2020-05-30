@@ -13,7 +13,8 @@ exports.user =  [
     .isLength({ min: 6 }).withMessage('lastname minimam 24'),
 
     // check('email').custom(value => {
-    //     return User.findUserByMail(value).then(user => {
+    //     return User.findUserByEmail(value).then(user => {
+    //         console.log("email",user);
     //       if (user) {
     //         return Promise.reject('This email allredy used');
     //       }

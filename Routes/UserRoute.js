@@ -7,6 +7,7 @@ const AddressValidation = require('../Validations/AddressValidation');
 
 
 router.post('/', UserValidation.user, UserController.store);
+router.get('/', UserController.index);
 router.post('/:userId/address', AddressValidation.address, AddressController.store);
 
 module.exports = router;

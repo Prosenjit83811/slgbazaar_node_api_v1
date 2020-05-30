@@ -1,10 +1,12 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
+const mongoosePaginate = require('mongoose-paginate-v2');
+
 
 var userSchema = mongoose.Schema({
-    firstname: { type: Number, required: true, unique: true},
-    lastname: { type: Number, required: true, unique: true},
-    email: { type: Number, required: true, unique: true},
+    firstname: { type: String, required: true},
+    lastname: { type: String, required: true},
+    // email: { type: String, required: false, unique: true},
     number: { type: Number, required: true, unique: true},
     password: { type: String, required: true},
     isDeleted: { type: Boolean, 'default': false },
@@ -20,7 +22,7 @@ var userSchema = mongoose.Schema({
     }]
 }, {timestamps: true});
 
-
+userSchema.plugin(mongoosePaginate);
 const User = module.exports = mongoose.model("User", userSchema);
 
 module.exports.getUserByID = function(id, callback){
@@ -29,6 +31,12 @@ module.exports.getUserByID = function(id, callback){
 module.exports.findUserByNumber = function(number, callback){
     const query = {
         number: number
+    };
+    return User.findOne(query, callback);
+}
+module.exports.findUserByEmail = function(email, callback){
+    const query = {
+        email: email
     };
     return User.findOne(query, callback);
 }
