@@ -1,5 +1,5 @@
 
-const { check, body , query ,oneOf, validationResult, custom } = require('express-validator/check');
+const { check, body , param,query,oneOf, validationResult, custom} = require('express-validator/check');
 const User = require('../Models/UserModel')
 
 exports.user =  [
@@ -24,8 +24,10 @@ exports.user =  [
     // .isInt().withMessage('invalied email').isLength({ min: 10 }).withMessage('email minimam 10'),
 
 
-    check('number').custom(value => {
-        return User.findUserByNumber(value).then(user => {
+    check('number')
+    .custom((value, { req }) => {
+        return User.findUserByNumber(value,req.params.userId).then(user => {
+            // console.log("user_id",req.params.userId);
           if (user) {
             return Promise.reject('This Number allredy used');
           }

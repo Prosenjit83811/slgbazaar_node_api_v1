@@ -73,10 +73,7 @@ exports.store = async (req, res) => {
 exports.update = async (req, res) => {
 
     try {
-        let id = "";
-        // const user = new User(req.body);
-
-        User.findByIdAndUpdate(req.params.userId, req.body, function(error, updated){
+        User.findByIdAndUpdate(req.params.userId, req.body, function(error, result){
             console.log(req.params.userId);
             console.log(req.body);
             if(error) {
@@ -90,25 +87,9 @@ exports.update = async (req, res) => {
                 });
             }
         });
-        
-        // await user.save((error, result)=>{
-        //     if(error) {
-        //         console.log(error);
-        //         res.status(500);
-        //         res.send(error);
-        //     }
-        //     else {
-        //         id = result._id;
-        //         res.status(200);
-        //         res.json({
-        //             message: "Successfully Updated"
-        //         });
-        //     }
-        // });
 
     } catch (error) {
         res.send(500);
     }
-
 
 }
