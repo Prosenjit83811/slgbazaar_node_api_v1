@@ -4,6 +4,25 @@ const User = require('../Models/UserModel')
 
 exports.user =  [
 
+    check('firstname')
+    .notEmpty().withMessage('firstname not empty')
+    .isLength({ min: 6 }).withMessage('firstname minimam 24'),
+
+    check('lastname')
+    .notEmpty().withMessage('lastname not empty')
+    .isLength({ min: 6 }).withMessage('lastname minimam 24'),
+
+    // check('email').custom(value => {
+    //     return User.findUserByMail(value).then(user => {
+    //       if (user) {
+    //         return Promise.reject('This email allredy used');
+    //       }
+    //     });
+    // })
+    // .notEmpty().withMessage('email not empty')
+    // .isInt().withMessage('invalied email').isLength({ min: 10 }).withMessage('email minimam 10'),
+
+
     check('number').custom(value => {
         return User.findUserByNumber(value).then(user => {
           if (user) {
@@ -12,7 +31,8 @@ exports.user =  [
         });
     })
     .notEmpty().withMessage('Number not empty')
-    .isInt().withMessage('invalied number').isLength({ min: 10 }).withMessage('Number minimam 10'),
+    .isInt().withMessage('invalied number')
+    .isLength({ min: 10 }).withMessage('number minimam 10'),
 
     check('password')
     .notEmpty().withMessage('Password not empty')

@@ -1,10 +1,11 @@
 const mongoose = require('mongoose');
 
 var addressSchema = mongoose.Schema({
+    type: { type: String, required: true},
     state: { type: String, required: true},
     city: { type: String, required: true},
+    pin: { type: String, required: true},
     landmark: { type: String, required: true},
-    address: { type: String, required: true},
     isDeleted: { type: Boolean, 'default': false },
     user: {
         type: mongoose.Schema.Types.ObjectId,

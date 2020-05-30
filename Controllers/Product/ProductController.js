@@ -1,10 +1,6 @@
-// const jwt = require('jsonwebtoken');
 const Product = require('../../Models/ProductModel')
-// const mongoosePaginate = require('mongoose-paginate-v2');
 require('../../Models/ProductVariationModel')
 require('../../Models/ProductAttributeModel')
-// require('../../Models/CategoryModel')
-// const dbConfig = require('../../Config/DB');
 
 exports.index = (req, res) => {
     
