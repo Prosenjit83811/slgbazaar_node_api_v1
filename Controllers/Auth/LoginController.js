@@ -13,6 +13,26 @@ exports.login = (req, res) => {
         if(!user){
             return Promise.reject('This Number Not Found');
         }
+        res.status(200).json({
+            data: 'Valied user'
+        });
+
+
+    });
+
+}
+
+exports.completeLogin = (req, res) => {
+    const number = req.body.number;
+    const password = req.body.password;
+    console.log(number);
+
+    User.findUserByNumber(number).then(user => {
+        console.log(user);
+
+        if(!user){
+            return Promise.reject('This Number Not Found');
+        }
 
 
         User.comparePassword(password, user.password, (error, isMatch)=>{
@@ -33,7 +53,7 @@ exports.login = (req, res) => {
                 return  res.json({"token":token});
             }
         });
-        
+
     });
 
 }

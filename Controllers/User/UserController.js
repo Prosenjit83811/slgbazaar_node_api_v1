@@ -93,3 +93,25 @@ exports.update = async (req, res) => {
     }
 
 }
+
+exports.delete = async (req, res) => {
+
+    try {
+        User.findByIdAndUpdate(req.params.userId, {}, function(error, result){
+            if(error) {
+                res.status(500);
+                res.send(error);
+            }
+            else {
+                res.status(200);
+                res.json({
+                    message: "Successfully Updated"
+                });
+            }
+        });
+
+    } catch (error) {
+        res.send(500);
+    }
+
+}
