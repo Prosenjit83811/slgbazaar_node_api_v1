@@ -64,6 +64,9 @@ module.exports.comparePassword = function(password, hash, callback){
     })
 }
 
-module.exports.hasRole = (role, callback)=>{
-    return callback(false,['s_admin','admin']);
+module.exports.hasPermission = (role, callback)=>{
+    // return callback(false,['s_admin','admin']);
+    return callback(false,{
+        "post":['s_admin','admin']
+    });
 }

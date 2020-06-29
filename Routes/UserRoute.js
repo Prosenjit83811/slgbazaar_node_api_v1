@@ -4,9 +4,11 @@ const UserController = require('../Controllers/User/UserController');
 const UserValidation = require('../Validations/UserValidation');
 const AddressController = require('../Controllers/User/AddressController');
 const AddressValidation = require('../Validations/AddressValidation');
+const Policy = require('express-policies');
+const UserPolicie = require('../Policies/UserPolicy');
 
 router.get('/', UserController.index);
-router.post('/', UserValidation.user, UserController.store);
+router.post('/', Policy(UserPolicie), UserValidation.user, UserController.store);
 router.put('/:userId', UserValidation.user, UserController.update);
 router.post('/:userId/address', AddressValidation.address, AddressController.store);
 

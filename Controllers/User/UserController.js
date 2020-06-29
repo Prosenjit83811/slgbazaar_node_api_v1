@@ -2,8 +2,7 @@ const jwt = require('jsonwebtoken');
 const User = require('../../Models/UserModel')
 const Role = require('../../Models/RoleModel')
 const dbConfig = require('../../Config/DB');
-
-
+const bcrypt = require('bcryptjs');
 
 exports.index = (req, res) => {
     
@@ -47,7 +46,10 @@ exports.store = async (req, res) => {
 
     try {
         let id = "";
+        req.body.password = bcrypt.hashSync(req.body.password);
+        console.log("body",req.body);
         const user = new User(req.body);
+
         await user.save((error, result)=>{
             if(error) {
                 console.log(error);
