@@ -21,4 +21,5 @@ module.exports = function(app){
     app.use(prefix+'/users', [passport.authenticate('jwt', { session: false })], User);
     app.use(prefix+'/category', [passport.authenticate('jwt', { session: false }),Policy(UserPolicie)], Category);
     app.use(prefix+'/products', [passport.authenticate('jwt', { session: false }),Policy(UserPolicie)], Product);
+    
 }

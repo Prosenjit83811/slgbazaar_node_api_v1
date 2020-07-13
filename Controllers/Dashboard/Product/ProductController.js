@@ -1,6 +1,6 @@
-const Product = require('../../Models/ProductModel')
-require('../../Models/ProductVariationModel')
-require('../../Models/ProductAttributeModel')
+const Product = require('../../../Models/ProductModel')
+require('../../../Models/ProductVariationModel')
+require('../../../Models/ProductAttributeModel')
 
 exports.index = (req, res) => {
     

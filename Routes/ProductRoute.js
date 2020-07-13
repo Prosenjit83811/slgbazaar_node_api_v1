@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const ProductController = require('../Controllers/Product/ProductController');
+const ProductController = require('../Controllers/Dashboard/Product/ProductController');
 // const CategoryValidation = require('../Validations/CategoryValidation');
 
 

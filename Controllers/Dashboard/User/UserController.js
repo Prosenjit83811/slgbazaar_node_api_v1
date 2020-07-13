@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
-const User = require('../../Models/UserModel')
-const Role = require('../../Models/RoleModel')
-const dbConfig = require('../../Config/DB');
+const User = require('../../../Models/UserModel')
+const Role = require('../../../Models/RoleModel')
+const dbConfig = require('../../../Config/DB');
 const bcrypt = require('bcryptjs');
 
 exports.index = (req, res) => {

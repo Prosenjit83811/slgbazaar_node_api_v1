@@ -1,8 +1,8 @@
 const jwt = require('jsonwebtoken');
-const Address = require('../../Models/AddressModel')
-const Role = require('../../Models/RoleModel')
-const User = require('../../Models/UserModel')
-const dbConfig = require('../../Config/DB');
+const Address = require('../../../Models/AddressModel')
+const Role = require('../../../Models/RoleModel')
+const User = require('../../../Models/UserModel')
+const dbConfig = require('../../../Config/DB');
 
 
 exports.store = async (req, res) => {
