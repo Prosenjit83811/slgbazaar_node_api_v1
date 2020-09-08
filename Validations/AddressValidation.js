@@ -20,7 +20,6 @@ exports.address =  [
     .notEmpty().withMessage('Address not empty')
     .isLength({ min: 2 }).withMessage('password minimam 2'),
 
-
     function(req,res,next) {
 
         var errorValidation = validationResult(req);
