@@ -8,6 +8,7 @@ const Policy = require('express-policies');
 const UserPolicie = require('../Policies/UserPolicy');
 
 router.get('/', UserController.index);
+router.get('/:userId', UserController.show);
 router.post('/', Policy(UserPolicie), UserValidation.user, UserController.store);
 router.put('/:userId', UserValidation.user, UserController.update);
 router.post('/:userId/address', AddressValidation.address, AddressController.store);

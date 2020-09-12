@@ -29,8 +29,8 @@ module.exports.getUserByID = function(id, callback){
     User.findById(id, callback).populate("role");
 }
 module.exports.findUserByNumber = function(number,userId, callback){
-    console.log("user_id",userId);
-    console.log("number",number);
+    // console.log("user_id",userId);
+    // console.log("number",number);
 
     const query = {
             number: number,

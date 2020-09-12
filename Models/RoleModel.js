@@ -11,3 +11,23 @@ var roleSchema = mongoose.Schema({
 
 const Role = module.exports = mongoose.model("Role", roleSchema);
 
+
+// module.exports.findRoleById = function(number,roleId, callback){
+
+//     const query = {
+//             _id: {$ne: roleId}
+//         };
+
+//     return Role.findOne(query, callback);
+  
+    
+// }
+
+
+module.exports.findRoleById = function(roleId, callback){
+
+    const query = {
+        _id: roleId
+    };
+    return Role.findOne(query, callback);
+}

@@ -1,5 +1,5 @@
 
-const { check, body , query ,oneOf, validationResult, custom } = require('express-validator/check');
+const { check, body , query ,oneOf, validationResult, custom } = require('express-validator');
 const User = require('.././Models/UserModel')
 
 exports.login =  [

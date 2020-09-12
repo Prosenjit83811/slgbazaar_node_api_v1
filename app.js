@@ -10,7 +10,7 @@ const bodyParser = require('body-parser');
 
 const dbConfig = require('./Config/DB');
 
-mongoose.connect(dbConfig.detabase, {useNewUrlParser:true})
+mongoose.connect(dbConfig.detabase, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true})
 .then(()=>{
     console.log(`Deatebase connected successfully ${dbConfig.detabase}`);
 })
