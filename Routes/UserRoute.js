@@ -11,6 +11,7 @@ router.get('/', UserController.index);
 router.get('/:userId', UserController.show);
 router.post('/', Policy(UserPolicie), UserValidation.user, UserController.store);
 router.put('/:userId', UserValidation.user, UserController.update);
+router.delete('/:userId', UserController.delete);
 router.post('/:userId/address', AddressValidation.address, AddressController.store);
 
 module.exports = router;

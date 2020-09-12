@@ -51,10 +51,12 @@ exports.index = (req, res) => {
 
 exports.show = (req, res) => {
     
-    var userId = req.user.id;
+    var userId = req.params.userId;
+    console.log('userId',userId)
    
     try {
         User.findById(userId)
+            .find({isDeleted: false})
             .populate("role")
             .populate("address")
             .exec()
@@ -140,7 +142,7 @@ exports.update = async (req, res) => {
 exports.delete = async (req, res) => {
 
     try {
-        User.findByIdAndUpdate(req.params.userId, {}, function(error, result){
+        User.findByIdAndUpdate(req.params.userId, {isDeleted:true}, function(error, result){
             if(error) {
                 res.status(500);
                 res.send(error);
@@ -148,7 +150,7 @@ exports.delete = async (req, res) => {
             else {
                 res.status(200);
                 res.json({
-                    message: "Successfully Updated"
+                    message: "Successfully Deleted"
                 });
             }
         });
