@@ -17,6 +17,10 @@ exports.seed = {
             {
                 '_id': mongoose.mongo.ObjectId("5e5c71356a30d91a4fddaa69"),
                 'role': 'employee'
+            },
+            {
+                '_id': mongoose.mongo.ObjectId("5e5c71356a30d91a4fddaa61"),
+                'role': 'customer'
             }
         ]
     };

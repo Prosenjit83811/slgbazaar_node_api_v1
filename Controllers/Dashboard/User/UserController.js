@@ -6,10 +6,18 @@ const bcrypt = require('bcryptjs');
 
 exports.index = (req, res) => {
     
+    let sortKey = req.query.sort_by;
+    let sort = {};
+    if(req.query.sort == 'asc'){
+        sort[sortKey] = 1;
+    }else{
+        sort[sortKey] = -1;
+    }
+
     const options = {
-        sort: {"name": -1},
-        page: 1,
-        limit: 2,
+        sort: sort,
+        page: req.query.page,
+        limit: req.query.limit,
         populate: {
             select: ['_id','role'],
             path: 'role' 
