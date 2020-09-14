@@ -12,3 +12,11 @@ var categorySchema = mongoose.Schema({
 }, {timestamps: true});
 categorySchema.plugin(mongoosePaginate);
 const Category = module.exports = mongoose.model('Category', categorySchema);
+
+module.exports.findCategory = function(id,category, callback){
+    const query = {
+        _id: {$ne: id},
+        category: category
+    };
+    return Category.findOne(query, callback);
+}

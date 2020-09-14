@@ -13,3 +13,10 @@
 //// ---- API ---- ////
 // http://localhost:3000/api/1.0/auth/login
 // https://stackoverflow.com/questions/19222520/populate-nested-array-in-mongoose
+
+
+
+
+// https://www.freecodecamp.org/news/express-js-security-tips/
+// https://www.npmjs.com/package/accesscontrol
+// https://www.npmjs.com/package/express-jwt-permissions
