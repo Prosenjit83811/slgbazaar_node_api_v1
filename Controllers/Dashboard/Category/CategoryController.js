@@ -1,8 +1,4 @@
-// const jwt = require('jsonwebtoken');
 const Category = require('../../../Models/CategoryModel')
-// const mongoosePaginate = require('mongoose-paginate-v2');
-// const Role = require('../../Models/RoleModel')
-// const dbConfig = require('../../Config/DB');
 
 exports.index = (req, res) => {
     
@@ -93,7 +89,6 @@ exports.show = (req, res) => {
 exports.store = async (req, res) => {
 
     try {
-        // let id = "";
         const user = new Category(req.body);
 
         await user.save((error, result)=>{
@@ -104,7 +99,6 @@ exports.store = async (req, res) => {
             }
             else 
             {
-                // id = result._id;
                 res.status(200);
                 res.json({
                     message: "Successfully Added"
