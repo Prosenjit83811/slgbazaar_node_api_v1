@@ -13,6 +13,13 @@ var categorySchema = mongoose.Schema({
 categorySchema.plugin(mongoosePaginate);
 const Category = module.exports = mongoose.model('Category', categorySchema);
 
+module.exports.findCategoryById = function(id, callback){
+    const query = {
+        _id: id
+    };
+    return Category.findOne(query, callback);
+}
+
 module.exports.findCategory = function(id,category, callback){
     const query = {
         _id: {$ne: id},
