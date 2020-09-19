@@ -47,7 +47,7 @@ exports.user =  [
 
     check('role').custom(value => {
         return Role.findRoleById(value).then(res => {
-          console.log('res',res);
+          // console.log('res',res);
           if (!res) {
             return Promise.reject('This role not found');
           }

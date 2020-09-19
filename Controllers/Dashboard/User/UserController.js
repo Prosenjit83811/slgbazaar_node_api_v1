@@ -52,7 +52,6 @@ exports.index = (req, res) => {
 exports.show = (req, res) => {
     
     var userId = req.params.userId;
-    console.log('userId',userId)
    
     try {
         User.findById(userId)
