@@ -51,9 +51,10 @@ module.exports.findUserByNumber = function(number,userId, callback){
     return User.findOne(query, callback);
 }
 
-module.exports.findUserByEmail = function(email, callback){
+module.exports.findUserByEmail = function(email,userId, callback){
     const query = {
-        email: email
+        email: email,
+        _id: {$ne: userId}
     };
     return User.findOne(query, callback);
 }

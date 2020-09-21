@@ -24,12 +24,10 @@ exports.user =  [
     .notEmpty().withMessage('email not empty')
     .isEmail().withMessage('This email is not valid'),
 
-
     check('number')
     .custom((value, { req }) => {
-        return User.findUserByNumber(value,req.params.userId).then(user => {
-            // console.log("user_id",req.params.userId);
-          if (user) {
+        return User.findUserByNumber(value, req.user._id).then(res => {
+          if (res) {
             return Promise.reject('This phone number allredy used');
           }
         });
@@ -37,18 +35,6 @@ exports.user =  [
     .notEmpty().withMessage('Number not empty')
     .isInt().withMessage('invalied number')
     .isLength({ min: 10 }).withMessage('number minimam 10'),
-
-    check('password')
-    .notEmpty().withMessage('Password not empty')
-    .isLength({ min: 6 }).withMessage('password minimam 6'),
-
-    check('role').custom(value => {
-        return Role.findRoleById(value).then(res => {
-          if (!res) {
-            return Promise.reject('This role not found');
-          }
-        });
-    }),
 
     function(req,res,next) {
 

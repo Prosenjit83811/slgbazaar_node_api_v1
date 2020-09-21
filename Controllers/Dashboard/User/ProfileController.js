@@ -33,6 +33,29 @@ exports.index = (req, res) => {
     }
 }
 
+exports.update = async (req, res) => {
+
+    try {
+        var userId = req.user.id;
+        
+        User.findByIdAndUpdate(userId, req.body, function(error, result){
+            if(error) {
+                res.status(500);
+                res.send(error);
+            }
+            else {
+                res.status(200);
+                res.json({
+                    message: "Successfully Updated"
+                });
+            }
+        });
+
+    } catch (error) {
+        res.send(500);
+    }
+
+}
 
 exports.changePassword = async (req, res) => {
 
