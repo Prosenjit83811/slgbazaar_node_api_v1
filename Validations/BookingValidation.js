@@ -1,24 +1,36 @@
 
 const { check, body , param,query,oneOf, validationResult, custom} = require('express-validator');
 const Booking = require('../Models/BookingModel')
+const Product = require('../Models/ProductModel')
+const Address = require('../Models/AddressModel')
+
 
 exports.booking =  [
 
-    check('category')
-    // .custom((value, { req }) => {
-    //     return Category.findCategory(req.params.id, value).then(res => {
-    //       if (res) {
-    //         return Promise.reject('This category allredy used');
-    //       }
-    //     });
-    // })
-    .notEmpty().withMessage('category not empty')
-    .isLength({ min: 3 }).withMessage('category minimam 3'),
+    check('products')
+    .isArray().withMessage('Products in array')
+    .notEmpty().withMessage('Products not empty'),
 
+    check('products.*')
+    .notEmpty().withMessage('Products not empty')
+    .custom(value => {
+        return Product.checkExists({_id: value}).then(result => {
+            if (!result) {
+                return Promise.reject('This product not found.');
+            }
+        });
+    }),
 
-    check('description')
-    .notEmpty().withMessage('description not empty')
-    .isLength({ min: 10 }).withMessage('description minimam 3'),
+    check('address')
+    .custom((value, { req }) => {
+        return Address.checkExists({_id: value}).then(result => {
+          if (!result) {
+            return Promise.reject('This address not found');
+          }
+        });
+    })
+    .notEmpty().withMessage('Address name not empty'),
+
 
     function(req,res,next) {
 

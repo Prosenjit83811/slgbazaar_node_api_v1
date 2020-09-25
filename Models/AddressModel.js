@@ -20,3 +20,7 @@ var addressSchema = mongoose.Schema({
 
 addressSchema.plugin(mongoosePaginate);
 const Address = module.exports = mongoose.model('Address', addressSchema);
+
+module.exports.checkExists = function(query, callback){
+    return Address.findOne(query, callback);
+}
