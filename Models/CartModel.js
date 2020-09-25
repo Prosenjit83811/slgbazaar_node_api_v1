@@ -11,10 +11,16 @@ var cartSchema = mongoose.Schema({
     products: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "Product",
-        required: true
+        required: true,
     }],
 }, {timestamps: true});
 cartSchema.plugin(mongoosePaginate);
+cartSchema.path('products').validate(function (value) {
+    console.log(value.length)
+    if (value.length > 25) {
+        throw new Error("Cart has touched the max limit. Please delete existing cart items to add a new item.");
+    }
+});
 const Cart = module.exports = mongoose.model("Cart", cartSchema);
 
 // module.exports.findRoleById = function(roleId, callback){
@@ -30,4 +36,13 @@ module.exports.findCartByUserId = function(id, callback){
             user: id,
         };
     return Cart.findOne(query, callback);
+}
+
+module.exports.checkProductLimit = function(id, callback){
+    const query = {
+            user: id,
+        };
+    // return Cart.findOne(query, callback);
+    return Cart.findOne(query).populate('product')
+
 }
