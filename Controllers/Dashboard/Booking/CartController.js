@@ -124,32 +124,10 @@ exports.store = async (req, res) => {
 
 }
 
-exports.update = async (req, res) => {
-
-    try {
-        Cart.findByIdAndUpdate(req.params.id, req.body, function(error, result){
-            if(error) {
-                res.status(500);
-                res.send(error);
-            }
-            else {
-                res.status(200);
-                res.json({
-                    message: "Successfully Updated"
-                });
-            }
-        });
-
-    } catch (error) {
-        res.send(500);
-    }
-
-}
-
 exports.delete = async (req, res) => {
 
     try {
-        Cart.findByIdAndUpdate(req.params.id, {isDeleted:true}, function(error, result){
+        Cart.findByIdAndUpdate(req.params.id,{ $pull: { products: req.params.productId } }, function(error, result){
             if(error) {
                 res.status(500);
                 res.send(error);
