@@ -127,7 +127,7 @@ exports.store = async (req, res) => {
 exports.delete = async (req, res) => {
 
     try {
-        Cart.findByIdAndUpdate(req.params.id,{ $pull: { products: req.params.productId } }, function(error, result){
+        Cart.findOneAndUpdate({user: req.user._id},{ $pull: { products: req.params.productId } }, function(error, result){
             if(error) {
                 res.status(500);
                 res.send(error);
