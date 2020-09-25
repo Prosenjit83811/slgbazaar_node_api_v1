@@ -13,7 +13,6 @@ var cartSchema = mongoose.Schema({
         ref: "Product",
         required: true
     }],
-    isDeleted: { type: Boolean, 'default': false },
 }, {timestamps: true});
 cartSchema.plugin(mongoosePaginate);
 const Cart = module.exports = mongoose.model("Cart", cartSchema);

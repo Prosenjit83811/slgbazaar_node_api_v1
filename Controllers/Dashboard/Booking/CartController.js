@@ -28,7 +28,7 @@ exports.index = (req, res) => {
         };
 
         var query   = {
-            isDeleted: false 
+            user: req.user._id
         };
 
         Cart.paginate(query, options)
@@ -55,42 +55,6 @@ exports.index = (req, res) => {
     }
 
     
-}
-
-exports.show = (req, res) => {
-    
-    var id = req.params.id;
-   
-    try {
-        Cart.findById(id)
-            .find({isDeleted: false})
-            .populate({
-                path: 'sub_categories',
-                match: { isDeleted: false }
-            })
-            .exec()
-            .then(result => {
-                if(result){
-                    res.status(200).json({
-                        data: result
-                    });
-                }else{
-                    res.status(404).json({
-                        message: "Not found any record"
-                    });
-                }
-                
-            })
-            .catch(error => {
-                res.status(500).json({
-                    error: error
-                });
-            });
-    
-    } catch (error) {
-        res.send(500);
-    }
-
 }
 
 exports.store = async (req, res) => {
