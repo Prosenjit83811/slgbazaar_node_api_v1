@@ -97,9 +97,9 @@ exports.store = async (req, res) => {
 
     try {
 
-        var query = {user: req.user._id, $push: { products: req.body.product_id  } },
-            conduction = { user: req.user._id, products: {$ne:req.body.product_id} },
-            options = {upsert: true, new: true, runValidators: true};
+        var query = {user: req.user._id, $addToSet: { products: req.body.product_id  } },
+            conduction = { user: req.user._id },
+            options = {safe: true, upsert: true, new: true, runValidators: true};
 
         await Cart.findOneAndUpdate(conduction, query, options, function(error, result) {
             if(error) {
