@@ -31,3 +31,10 @@ const Product = module.exports = mongoose.model('Product', productSchema);
 module.exports.checkExists = function(query, callback){
     return Product.findOne(query, callback);
 }
+
+module.exports.findProductById = function(id, callback){
+    const query = {
+        _id: id,
+        };
+    return Product.findOne(query, callback);
+}
