@@ -20,3 +20,28 @@
 // https://www.freecodecamp.org/news/express-js-security-tips/
 // https://www.npmjs.com/package/accesscontrol
 // https://www.npmjs.com/package/express-jwt-permissions
+
+
+attribute_type:
+    type = brand
+    vale = {sumsung,sony}
+
+    type = color
+    vale = {red,sgreenony}
+
+    type = size
+    vale = {M,XXX}
+
+    type = Display Size
+    vale = {M,XXX}
+
+    type = quantity
+    vale = {1,2,3,4,5,6,7,8,9,10}
+
+    type = power_consumption
+    vale = {1,2,3,4,5,6,7,8,9,10}
+
+
+products_attribute:
+    products_id
+    attribute_id
