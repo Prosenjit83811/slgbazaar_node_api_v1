@@ -6,10 +6,10 @@ const PolicyError = require('./policy-error');
 exports = module.exports = function (policy, action = null) {
     if (!isFunction(policy)) throw new Error('Please provide a valid policy!');
 
-    return function (request, response, next) {
-        const result = policy(request,action);
+    return async function (request, response, next) {
+        const result = await policy(request,action);
 
-        if (!isBoolean(result)) throw new Error('Policy returned a non-valid result.');
+         if (!isBoolean(result)) throw new Error('Policy returned a non-valid result.');
 
         if (!result) {
             return next(

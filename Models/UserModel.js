@@ -33,14 +33,19 @@ const User = module.exports = mongoose.model("User", userSchema);
 module.exports.getUserByID = function(id, callback){
     User.findById(id, callback).populate("role");
 }
-module.exports.findUserByID = async function(userId, callback){
-    try {
-        const user = await User.findById(userId);
-        if (!user) return false;
-        return true
-    } catch (error) {
-        return res.status(500).json({ message: "Internal server error." })
-    }
+module.exports.findUserByID =  function(userId, callback){
+    // try {
+    //     const user = await User.findById(userId);
+    //     if (!user) return false;
+    //     return true
+    // } catch (error) {
+    //     return res.status(500).json({ message: "Internal server error." })
+    // }
+
+    const query = {
+        _id: userId,
+    };
+    return User.findOne(query)
 
 }
 module.exports.findUserByNumber = function(number,userId, callback){
