@@ -16,9 +16,8 @@ exports.attribute =  [
     .isLength({ min: 3 }).withMessage('category minimam 3'),
 
 
-    // check('description')
-    // .notEmpty().withMessage('description not empty')
-    // .isLength({ min: 10 }).withMessage('description minimam 3'),
+    check('value')
+    .isArray().withMessage('Products in array'),
 
     function(req,res,next) {
 
