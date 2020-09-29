@@ -8,6 +8,7 @@ const ProductVariation = require('./ProductVariation');
 const ProductAttribute = require('./ProductAttribute');
 const Cart = require('./Cart');
 const Attribute = require('./Attribute');
+const RBAC = require('./RBAC');
 
 const models = [
   'User',
@@ -18,7 +19,8 @@ const models = [
   'ProductVariation',
   'ProductAttribute',
   'Cart',
-  'Attribute'
+  'Attribute',
+  'RBAC'
 ]
 
 // Connect to MongoDB via Mongoose
@@ -35,6 +37,7 @@ seeder.connect('mongodb://127.0.0.1:27017/slgbazaar', function() {
     './Models/ProductAttributeModel',
     './Models/CartModel',
     './Models/AttributeModel',
+    './Models/RBACModel',
   ]);
  
   // Clear specified collections
@@ -59,4 +62,5 @@ var data = [
             ProductAttribute.seed,
             Cart.seed,
             Attribute.seed,
+            RBAC.seed,
           ];
