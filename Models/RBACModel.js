@@ -9,7 +9,7 @@ var RBACSchema = mongoose.Schema({
     route: { type: String, required: true},
     action: { type: String, required: true},
     permission: { type: Boolean, required: true, 'default': false },
-    // authPass: { type: Boolean, required: true, 'default': false },
+    rolePass: { type: Array, required: false},
 
 }, {timestamps: true});
 
