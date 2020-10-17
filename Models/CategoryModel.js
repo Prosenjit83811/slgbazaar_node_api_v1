@@ -5,6 +5,10 @@ var categorySchema = mongoose.Schema({
     category: { type: String, required: true},
     description: { type: String, required: true},
     isDeleted: { type: Boolean, 'default': false },
+    deletedAt: {
+        type: Date,
+        default: null,
+    },
     sub_categories: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "Category"

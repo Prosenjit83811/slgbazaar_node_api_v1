@@ -5,6 +5,10 @@ var productAttributeSchema = mongoose.Schema({
     attribute: { type: String, required: true},
     value: { type: String, required: true},
     isDeleted: { type: Boolean, 'default': false },
+    deletedAt: {
+        type: Date,
+        default: null,
+    },
     productVariation: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "ProductVariation"

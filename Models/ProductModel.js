@@ -10,6 +10,10 @@ var productSchema = mongoose.Schema({
     // quantity: { type: Number, required: true},
     slug: { type: String, required: true},
     isDeleted: { type: Boolean, 'default': false },
+    deletedAt: {
+        type: Date,
+        default: null,
+    },
     // isParent: { type: Boolean, required: true},
     // postParent: [{
     //     type: mongoose.Schema.Types.ObjectId,

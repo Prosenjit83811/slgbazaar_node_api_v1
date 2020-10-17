@@ -8,7 +8,7 @@ exports.seed = {
             'route': "user",
             'action': 'user.index',
             'permission': true,
-            'rolePass': [{"roel":"s_admin", "id":"5e5c73a6296703206fcd8ed7"}],
+            'rolePass': true,
         },
         {
             '_id': mongoose.mongo.ObjectId("5e5c73a6296703206fcd8ed2"),

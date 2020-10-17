@@ -5,6 +5,10 @@ var attributeSchema = mongoose.Schema({
     attribute: { type: String, required: true},
     value: { type: Array, required: false},
     isDeleted: { type: Boolean, 'default': false },
+    deletedAt: {
+        type: Date,
+        default: null,
+    },
 }, {timestamps: true});
 attributeSchema.plugin(mongoosePaginate);
 const Attribute = module.exports = mongoose.model("Attribute", attributeSchema);

@@ -10,6 +10,10 @@ var userSchema = mongoose.Schema({
     number: { type: Number, required: true, unique: true},
     password: { type: String, required: true},
     isDeleted: { type: Boolean, 'default': false },
+    deletedAt: {
+        type: Date,
+        default: null,
+    },
     role: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Role",

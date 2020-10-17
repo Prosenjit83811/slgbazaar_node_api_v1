@@ -4,6 +4,10 @@ const mongoosePaginate = require('mongoose-paginate-v2');
 var productVariationSchema = mongoose.Schema({
     variation: { type: String, required: true},
     isDeleted: { type: Boolean, 'default': false },
+    deletedAt: {
+        type: Date,
+        default: null,
+    },
     productAttributes: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "ProductAttribute"
