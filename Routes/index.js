@@ -6,6 +6,7 @@ const Product = require('./ProductRoute');
 const Cart = require('./CartRoute');
 const Booking = require('./BookingRoute');
 const Attribute = require('./AttributeRoute');
+const Brand = require('./BrandRoute');
 const config = require('../Config/App');
 const prefix = '/api/'+config.version;
 const passport = require('passport')
@@ -27,5 +28,6 @@ module.exports = function(app){
     app.use(prefix+'/cart', [passport.authenticate('jwt', { session: false })], Cart);
     app.use(prefix+'/booking', [passport.authenticate('jwt', { session: false })], Booking);
     app.use(prefix+'/attribute', [passport.authenticate('jwt', { session: false })], Attribute);
+    app.use(prefix+'/brand', [passport.authenticate('jwt', { session: false })], Brand);
     
 }
