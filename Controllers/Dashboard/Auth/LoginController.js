@@ -3,15 +3,15 @@ const User = require('../../../Models/UserModel')
 const dbConfig = require('../../../Config/DB');
 
 exports.login = (req, res) => {
-    const number = req.body.number;
+    const mobileNumber = req.body.mobileNumber;
     const password = req.body.password;
-    console.log(number);
+    console.log(mobileNumber);
 
-    User.findUserByNumber(number).then(user => {
+    User.findUserByMobileNumber(mobileNumber).then(user => {
         console.log(user);
 
         if(!user){
-            return Promise.reject('This Number Not Found');
+            return Promise.reject('This Phone Number Not Found');
         }
         res.status(200).json({
             data: 'Valied user'
@@ -23,15 +23,15 @@ exports.login = (req, res) => {
 }
 
 exports.completeLogin = (req, res) => {
-    const number = req.body.number;
+    const mobileNumber = req.body.mobileNumber;
     const password = req.body.password;
-    console.log(number);
+    console.log(mobileNumber);
 
-    User.findUserByNumber(number).then(user => {
+    User.findUserByMobileNumber(mobileNumber).then(user => {
         console.log(user);
 
         if(!user){
-            return Promise.reject('This Number Not Found');
+            return Promise.reject('This phone Number Not Found');
         }
 
 
@@ -44,7 +44,7 @@ exports.completeLogin = (req, res) => {
                     type: "user",
                     data: {
                         _id: user._id,
-                        number: user.number
+                        mobileNumber: user.mobileNumber
                     }
                 },dbConfig.secret, {
                     expiresIn: 604800

@@ -9,7 +9,7 @@ exports.seed = {
                 'address': "5ec2cf70404f7436eaae36cc",
                 'firstname': "prosenjit",
                 'lastname': "sarkar",
-                'number': 9832098320,
+                'mobileNumber': 9832098320,
                 'email': 's_admin@test.com',
                 'password': bcrypt.hashSync('123456', 10),
             },
@@ -19,7 +19,7 @@ exports.seed = {
                 'address': "5ec2cf87404f7436eaae36cd",
                 'firstname': "piku",
                 'lastname': "sarkar",
-                'number': 9832198321,
+                'mobileNumber': 9832198321,
                 'email': 'admin@test.com',
                 'password': bcrypt.hashSync('123456', 10)
           },
@@ -29,7 +29,7 @@ exports.seed = {
               'address': "5ec2cf87404f7436eaae36cd",
               'firstname': "employee",
               'lastname': "sarkar",
-              'number': 9832198322,
+              'mobileNumber': 9832198322,
               'email': 'employee@test.com',
               'password': bcrypt.hashSync('123456', 10)
           },
@@ -39,7 +39,7 @@ exports.seed = {
               'address': "5ec2cf87404f7436eaae36cd",
               'firstname': "customer",
               'lastname': "sarkar",
-              'number': 9832198323,
+              'mobileNumber': 9832198323,
               'email': 'customer@test.com',
               'password': bcrypt.hashSync('123456', 10)
           }

@@ -4,13 +4,13 @@ const User = require('.././Models/UserModel')
 
 exports.login =  [
 
-    check('number').custom(value => {
-        return User.findUserByNumber(value).then(user => {
+    check('mobileNumber').custom(value => {
+        return User.findUserByMobileNumber(value).then(user => {
           if (!user) {
-            return Promise.reject('This Number Not Found');
+            return Promise.reject('This mobile number not found');
           }
         });
-    }).isInt().withMessage('invalied Number').isLength({ min: 10 }).withMessage('Number minimam 10'),
+    }).isInt().withMessage('Invalied mobile number').isLength({ min: 10 }).withMessage('Mobile Number minimam 10'),
 
     check('password')
     .notEmpty().withMessage('password notEmpty')

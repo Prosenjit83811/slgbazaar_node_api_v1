@@ -24,17 +24,17 @@ exports.user =  [
     .notEmpty().withMessage('email not empty')
     .isEmail().withMessage('This email is not valid'),
 
-    check('number')
+    check('mobileNumber')
     .custom((value, { req }) => {
-        return User.findUserByNumber(value, req.user._id).then(res => {
+        return User.findUserByMobileNumber(value, req.user._id).then(res => {
           if (res) {
-            return Promise.reject('This phone number allredy used');
+            return Promise.reject('This phone mobile number allredy used');
           }
         });
     })
-    .notEmpty().withMessage('Number not empty')
-    .isInt().withMessage('invalied number')
-    .isLength({ min: 10 }).withMessage('number minimam 10'),
+    .notEmpty().withMessage('Mobile Number not empty')
+    .isInt().withMessage('invalied mobile number')
+    .isLength({ min: 10 }).withMessage('mobile number minimam 10'),
 
     function(req,res,next) {
 

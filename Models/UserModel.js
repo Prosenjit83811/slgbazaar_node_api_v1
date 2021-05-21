@@ -7,7 +7,7 @@ var userSchema = mongoose.Schema({
     firstname: { type: String, required: true},
     lastname: { type: String, required: true},
     email: { type: String, required: false, unique: true},
-    number: { type: Number, required: true, unique: true},
+    mobileNumber: { type: Number, required: true, unique: true},
     password: { type: String, required: true},
     isDeleted: { type: Boolean, 'default': false },
     deletedAt: {
@@ -44,9 +44,9 @@ module.exports.findUserByID =  function(userId, callback){
     return User.findOne(query)
 
 }
-module.exports.findUserByNumber = function(number,userId, callback){
+module.exports.findUserByMobileNumber = function(mobileNumber,userId, callback){
     const query = {
-            number: number,
+            mobileNumber: mobileNumber,
             _id: {$ne: userId}
         };
     return User.findOne(query, callback);

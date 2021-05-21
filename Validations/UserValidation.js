@@ -25,18 +25,18 @@ exports.user =  [
     .isEmail().withMessage('This email is not valid'),
 
 
-    check('number')
+    check('mobileNumber')
     .custom((value, { req }) => {
-        return User.findUserByNumber(value,req.params.userId).then(user => {
+        return User.findUserByMobileNumber(value,req.params.userId).then(user => {
             // console.log("user_id",req.params.userId);
           if (user) {
-            return Promise.reject('This phone number allredy used');
+            return Promise.reject('This phone mobile number allredy used');
           }
         });
     })
-    .notEmpty().withMessage('Number not empty')
-    .isInt().withMessage('invalied number')
-    .isLength({ min: 10 }).withMessage('number minimam 10'),
+    .notEmpty().withMessage('Mobile number not empty')
+    .isInt().withMessage('invalied mobile number')
+    .isLength({ min: 10 }).withMessage('mobile number minimam 10'),
 
     check('password')
     .notEmpty().withMessage('Password not empty')
