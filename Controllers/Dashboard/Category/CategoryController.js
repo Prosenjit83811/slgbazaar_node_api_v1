@@ -66,11 +66,11 @@ exports.index = (req, res) => {
     try {
         Category
             .find({isDeleted: false})
-            .select({name: '$category'})
+            .select({text: '$category', children: '$sub_categories'})
             .populate({
-                path: 'sub_categories',
+                path: 'children',
                 match: { isDeleted: false },
-                select: {name: '$category'}
+                select: {text: '$category'}
             })
             // .aggregate([
             //     { $project:
