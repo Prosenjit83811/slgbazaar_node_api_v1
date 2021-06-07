@@ -15,6 +15,12 @@ var categorySchema = mongoose.Schema({
     }]
 }, {timestamps: true});
 categorySchema.plugin(mongoosePaginate);
+categorySchema.path('category').get(function (value, schemaType) {
+    return global.ucwords(value);
+});
+// categorySchema.set('toObject', { getters: true });
+categorySchema.set('toJSON', { getters: true });
+
 const Category = module.exports = mongoose.model('Category', categorySchema);
 
 module.exports.findCategoryById = function(id, callback){

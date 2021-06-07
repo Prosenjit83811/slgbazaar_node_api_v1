@@ -2,91 +2,32 @@ const Category = require('../../../Models/CategoryModel')
 
 exports.index = (req, res) => {
     
-    // try {
-    //     let sortKey = req.query.sort_by;
-    //     let sort = {};
-    //     if(req.query.sort == 'asc'){
-    //         sort[sortKey] = 1;
-    //     }else{
-    //         sort[sortKey] = -1;
-    //     }
-    //     const options = {
-    //         sort: sort,
-    //         page: req.query.page,
-    //         limit: req.query.limit,
-    //         populate: {
-    //             path: 'sub_categories', 
-    //             match: { isDeleted: false }
-    //         }
-    //     };
-
-    //     var query   = {
-    //         isDeleted: false 
-    //     };
-
-    //     Category.paginate(query, options)
-    //         .then(result => {
-    //             if(result){
-    //                 res.status(200).json({
-    //                     data: result
-    //                 });
-    //             }else{
-    //                 res.status(404).json({
-    //                     message: "Not found any record"
-    //                 });
-    //             }
-                
-    //         })
-    //         .catch(error => {
-    //             res.status(500).json({
-    //                 error: error
-    //             });
-    //         });
-    
-    // } catch (error) {
-    //     res.send(500);
-    // }
-
-    // Category.updateMany( {}, { $rename: { 'category': 'sdsdf' } }, {multi: true} )
-
-
-    // Category.aggregate([
-    //     { $project:
-    //         {
-    //             name: '$category',
-    //             isDeleted: '$isDeleted',
-    //         }
-    // },
-    // { "$match": { "isDeleted": false } },
-    //   ], function(err, contacts) {
-    //     console.log('contacts', contacts)
-    //     contacts.populate(result, {path: "sub_categories"}, callback);
-    //   });
-
     try {
-        Category
-            .find({isDeleted: false})
-            .select({text: '$category', children: '$sub_categories'})
-            .populate({
-                path: 'children',
-                match: { isDeleted: false },
-                select: {text: '$category'}
-            })
-            // .aggregate([
-            //     { $project:
-            //             {
-            //                 name: '$category',
-            //                 isDeleted: '$isDeleted',
-            //             }
-            //     },
-            //     { "$match": { "isDeleted": false } },
-            // ])
-            .exec()
+        let sortKey = req.query.sort_by;
+        let sort = {};
+        if(req.query.sort == 'asc'){
+            sort[sortKey] = 1;
+        }else{
+            sort[sortKey] = -1;
+        }
+        const options = {
+            sort: sort,
+            page: req.query.page,
+            limit: req.query.limit,
+            populate: {
+                path: 'sub_categories', 
+                match: { isDeleted: false }
+            }
+        };
+
+        var query   = {
+            isDeleted: false 
+        };
+
+        Category.paginate(query, options)
             .then(result => {
                 if(result){
-                    res.status(200).json(
-                        result
-                    );
+                    res.status(200).json(result);
                 }else{
                     res.status(404).json({
                         message: "Not found any record"
@@ -103,6 +44,40 @@ exports.index = (req, res) => {
     } catch (error) {
         res.send(500);
     }
+
+
+
+    // try {
+    //     Category
+    //         .find({isDeleted: false})
+    //         .select({text: '$category', children: '$sub_categories'})
+    //         .populate({
+    //             path: 'children',
+    //             match: { isDeleted: false },
+    //             select: {text: '$category'}
+    //         })
+    //         .exec()
+    //         .then(result => {
+    //             if(result){
+    //                 res.status(200).json(
+    //                     result
+    //                 );
+    //             }else{
+    //                 res.status(404).json({
+    //                     message: "Not found any record"
+    //                 });
+    //             }
+                
+    //         })
+    //         .catch(error => {
+    //             res.status(500).json({
+    //                 error: error
+    //             });
+    //         });
+    
+    // } catch (error) {
+    //     res.send(500);
+    // }
 
     
 }
