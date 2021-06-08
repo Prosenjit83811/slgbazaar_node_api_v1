@@ -16,12 +16,12 @@ exports.index = (req, res) => {
             limit: req.query.limit,
             populate: {
                 path: 'sub_categories', 
-                match: { isDeleted: false }
+                // match: { isDeleted: false }
             }
         };
 
         var query   = {
-            isDeleted: false 
+            // isDeleted: false 
         };
 
         Category.paginate(query, options)
@@ -168,10 +168,12 @@ exports.update = async (req, res) => {
 }
 
 exports.delete = async (req, res) => {
-
+    
     try {
-        Category.findByIdAndUpdate(req.params.id, {isDeleted:true}, function(error, result){
+        Category.delete({ deleted: true, deletedBy: ObjectId("53da93b16b4a6670076b16bf")},req.params.id, function(error, result){
             if(error) {
+            console.log('error', error)
+
                 res.status(500);
                 res.send(error);
             }
@@ -184,7 +186,11 @@ exports.delete = async (req, res) => {
         });
 
     } catch (error) {
-        res.send(500);
+        console.log('error', error)
+        res.status(500);
+        res.json({
+            error
+        });
     }
 
 }
